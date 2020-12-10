@@ -1,5 +1,11 @@
 from django.shortcuts import render
-from rest_framework.generics import ListAPIView , RetrieveAPIView
+from rest_framework.generics import (
+    ListAPIView ,
+    RetrieveAPIView ,
+    UpdateAPIView ,
+    DestroyAPIView ,
+    CreateAPIView ,
+)
 from A.models import(
     Parent_A ,
     Activites_A ,
@@ -17,11 +23,30 @@ from .serializers import(
     StudentSerializer ,
     TeacherSerializer
 )
-
+from rest_framework.permissions import (
+    AllowAny ,
+    IsAuthenticated ,
+    IsAdminUser ,
+    IsAuthenticatedOrReadOnly
+)
 class ParentListAPIVeiw(ListAPIView):
     queryset = Parent_A.objects.all()
     serializer_class = ParentSerializer
+class ParenCreateAPIVeiw(CreateAPIView):
+    queryset = Parent_A.objects.all()
+    serializer_class = ParentSerializer
+    permission_classes = [IsAuthenticated , IsAdminUser]
+    def preform_create(self , serializer):
+        serializer.save(user = self.request.user)
 class ParentRetrieveAPIView(RetrieveAPIView):
+    queryset = Parent_A.objects.all()
+    serializer_class = ParentSerializer
+class ParentUpdateAPIView(UpdateAPIView):
+    queryset = Parent_A.objects.all()
+    serializer_class = ParentSerializer
+    def preform_update(self , serializer):
+        serializer.save(user = self.request.user)
+class ParentDestroyAPIView(DestroyAPIView):
     queryset = Parent_A.objects.all()
     serializer_class = ParentSerializer
 

@@ -2,7 +2,10 @@ from django.contrib import admin
 from django.urls import path , include
 from .views import(
     ParentListAPIVeiw,
+    ParenCreateAPIVeiw ,
     ParentRetrieveAPIView ,
+    ParentDestroyAPIView ,
+    ParentUpdateAPIView ,
     ActivitesListAPIVeiw ,
     ActivitesRetrieveAPIView ,
     ClassroomListAPIVeiw ,
@@ -15,11 +18,12 @@ from .views import(
     TeacherRetrieveAPIView
 )
 
-
-
 urlpatterns = [
     path('Parent/' , ParentListAPIVeiw.as_view() ) ,
+    path('Parent/create' , ParenCreateAPIVeiw.as_view() ) ,
     path('Parent/<pk>' , ParentRetrieveAPIView.as_view() ) ,
+    path('Parent/<pk>/edit' , ParentUpdateAPIView.as_view() ) ,
+    path('Parent/<pk>/delete' , ParentDestroyAPIView.as_view() ) ,
     
     path('Acticites/' , ActivitesListAPIVeiw.as_view() ) ,
     path('Acticites/<pk>' , ActivitesRetrieveAPIView.as_view() ) ,
