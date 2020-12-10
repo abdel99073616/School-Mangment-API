@@ -28,26 +28,26 @@ class ActivitesSerializer(ModelSerializer):
 
 class CourseSerializer(ModelSerializer):
     class Meta :
-        model = Classroom_A
+        model = Course_A
         fields = '__all__'
 
 
 
 class ClassroomSerializer(ModelSerializer):
     class Meta :
-        model = Student_A
+        model = Classroom_A
         fields = '__all__'
 
 
 
 class StudentSerializer(ModelSerializer):
     class Meta :
-        model = Teacher_A
+        model = Student_A
         fields = '__all__'
 
 
 
 class TeacherSerializer(ModelSerializer):
     class Meta :
-        model = Course_A
+        model = Teacher_A
         fields = '__all__'
