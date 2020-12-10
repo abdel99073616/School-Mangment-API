@@ -43,6 +43,8 @@ INSTALLED_APPS = [
     'KG' ,
     'forall' ,
     'adminlog' ,
+    'rest_framework' ,
+    'api'
 ]
 
 MIDDLEWARE = [
